@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_09_095347) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_10_001149) do
   create_table "messages", charset: "utf8", force: :cascade do |t|
     t.string "content"
     t.bigint "room_id", null: false
@@ -26,6 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_09_095347) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "room_id"
+    t.index ["room_id", "user_id"], name: "index_room_users_on_room_id_and_user_id", unique: true
     t.index ["room_id"], name: "index_room_users_on_room_id"
     t.index ["user_id"], name: "index_room_users_on_user_id"
   end
